@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
@@ -16,12 +16,10 @@ namespace EmployeeManagement.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetAllEmployeesAsync()
+        public async Task<ActionResult<IEnumerable<Employee>>> GetAllAsync()
         {
             var allEmployees = await _employeeRepository.GetAllAsync();
-            return Ok();
-            //^^ the same as vv but all in one line
-            //return Ok(await _employeeRepository.GetAllAsync());
+            return Ok(allEmployees);
         }
 
         [HttpGet("{id}")]
